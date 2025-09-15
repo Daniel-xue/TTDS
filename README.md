@@ -24,7 +24,7 @@ TrackNet 會產生以球為中心的高斯熱圖來指示球的位置。二值�
 ## 球桌偵測
 ![image](https://github.com/Daniel-xue/TTDS/blob/main/%E7%90%83%E6%A1%8C%E5%81%B5%E6%B8%AC.PNG)
 
-本專案運用了多種影像處理技術（Gray Scale、Lines Inspect、Corners Inspect、Perspective Transform），  
+本專案運用了多種影像處理技術（GrayScale、HoughLinesP、MergeLines、FindHomography、PerspectiveTransform），  
 透過球桌邊框的四邊形白邊特徵進行分析與辨識，成功實現球桌位置的自動偵測。。
 
 ## 落點偵測
