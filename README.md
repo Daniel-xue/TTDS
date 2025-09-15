@@ -15,8 +15,10 @@
 ![image](https://github.com/Daniel-xue/TTDS/blob/main/%E7%90%83%E5%81%B5%E6%B8%AC2.PNG)
 
 採用TrackNet-R模型。
-一種兩階段式的深度學習網路軌跡預測方法。網路的第一階段負責將影像中包含球體的區域進行選擇，第二階段透過前述階段產生的連續畫面(3張)做為輸入，提升球偵測預測效能。
-此系統不僅能考量球體運動慣性，並能夠有效解決影像背景較複雜亦或球體被物件所遮蔽的狀況。
+TrackNet 是由台灣國立交通大學發明的用於高速微小物體追蹤的深度學習網路。它是一個 FCN 模型，採用 VGG16 產生特徵圖，並使用 DeconvNet 進行像素級分類解碼。
+TrackNet 可以將多個連續幀(3張)作為輸入，模型不僅可以學習物體追踪，還可以學習軌跡，從而增強其定位和識別能力。
+TrackNet 會產生以球為中心的高斯熱圖來指示球的位置。二值交叉熵用作損失函數，用於計算預測熱圖與真實熱圖之間的差異。
+此系統不僅能考量球體運動慣性，並能夠有效解決影像背景較複雜亦或是球體被物件所遮蔽的狀況。
 使用了幀率40 fps的桌球比賽錄像訓練(總計4萬多張照片)，球偵測"Precision"是86.9%，"Recall"是83.4%。
 
 ## 球桌偵測
@@ -27,9 +29,9 @@
 ## 落點偵測
 ![image](https://github.com/Daniel-xue/TTDS/blob/main/%E8%90%BD%E9%BB%9E%E5%81%B5%E6%B8%AC.PNG)
 
-使用了有6層全連接層的MLP。
-在有了所有畫面中球座標後，為屬於落點的畫面做標記，並使用連續畫面(7張)中球的座標變化來訓練模型。
-的影片中，落點分類"TPR"是84%，"FPR"是20%。
+模型使用有6層全連接層的MLP，訓練600輪，批次大小為16。
+在得到影像中每一幀的球座標後，為屬於落點的畫面標記1，不屬於落點的標記0，並使用連續幀(7張)來訓練模型。
+在我們的測試集中(大約4千多張照片)，落點分類"TPR"是84%，"FPR"是20%。
 
 ## 參考
 [1] https://arxiv.org/abs/1907.03698 TrackNet：用於追蹤運動應用中高速和微小物體的深度學習網絡
@@ -38,6 +40,6 @@
 
 [3] https://github.com/ChgygLin/TrackNetV2-pytorch TrackNetV2：高效率 TrackNet (GitLab) 
 
-[4] https://github.com/Chang-Chia-Chi/TrackNet-Badminton-Tracking-tensorflow2 
+[4] https://github.com/Chang-Chia-Chi/TrackNet-Badminton-Tracking-tensorflow2 TrackNet-羽球-追蹤-tensorflow2
 
 
