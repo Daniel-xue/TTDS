@@ -18,13 +18,14 @@
 TrackNet 是由台灣國立交通大學發明的用於高速微小物體追蹤的深度學習網路。它是一個 FCN 模型，採用 VGG16 產生特徵圖，並使用 DeconvNet 進行像素級分類解碼。
 TrackNet 可以將多個連續幀(3張)作為輸入，模型不僅可以學習物體追踪，還可以學習軌跡，從而增強其定位和識別能力。
 TrackNet 會產生以球為中心的高斯熱圖來指示球的位置。二值交叉熵用作損失函數，用於計算預測熱圖與真實熱圖之間的差異。
-此系統不僅能考量球體運動慣性，並能夠有效解決影像背景較複雜亦或是球體被物件所遮蔽的狀況。
+此系統不僅能考量球體運動慣性，並能夠有效解決影像背景較複雜亦或是球體被物件遮蔽的狀況。
 使用了幀率40 fps的桌球比賽錄像訓練(總計4萬多張照片)，球偵測"Precision"是86.9%，"Recall"是83.4%。
 
 ## 球桌偵測
 ![image](https://github.com/Daniel-xue/TTDS/blob/main/%E7%90%83%E6%A1%8C%E5%81%B5%E6%B8%AC.PNG)
 
-運用了傳統的影像處理技術，透過球桌的四邊形白邊特徵去偵測。
+本專案運用了多種影像處理技術（Gray Scale、Lines Inspect、Corners Inspect、Perspective Transform），  
+透過球桌邊框的四邊形白邊特徵進行分析與辨識，成功實現球桌位置的自動偵測。。
 
 ## 落點偵測
 ![image](https://github.com/Daniel-xue/TTDS/blob/main/%E8%90%BD%E9%BB%9E%E5%81%B5%E6%B8%AC.PNG)
